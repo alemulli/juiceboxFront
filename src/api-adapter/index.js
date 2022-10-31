@@ -21,9 +21,15 @@ export async function LogIn(username, password) {
     } catch (error) {
         console.error(error)
     }
-	
-
-    
-
 }
 
+export async function GetPosts() {
+    try {
+        const response = await fetch (`${BASE_URL}/api/posts`)
+        const result = await response.json()
+        const postResult = result.posts
+        return postResult
+    } catch (error) {
+        console.error(error)
+    }
+}

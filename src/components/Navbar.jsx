@@ -1,8 +1,7 @@
 import React from "react";
 import Popup from "reactjs-popup";
 import 'reactjs-popup/dist/index.css';
-import {Login} from "./"
-import { LogIn } from "../api-adapter";
+import { login } from "../helper-functions/login";
 
 const Navbar = () => {
 
@@ -15,7 +14,7 @@ const Navbar = () => {
             /*onChange={handleSearch}*/ />
         </form>
         <Popup trigger={<button>Log In</button>} position="bottom center">
-          <form className="submissionForm" onSubmit={Login}>  
+          <form className="submissionForm" onSubmit={login}>  
             <h3>Log In</h3>
             <span>
             <label htmlFor="username">Username: </label>

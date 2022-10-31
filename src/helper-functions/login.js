@@ -1,6 +1,6 @@
 import { LogIn } from "../api-adapter"
 
-async function login(event) {
+export async function login(event) {
     event.preventDefault()
     console.log("hello we made it")
         const username = event.target[0].value;
@@ -10,5 +10,3 @@ async function login(event) {
         localStorage.removeItem("token");
         localStorage.setItem("token", token)
 }
-
-export default login;
