@@ -1,8 +1,11 @@
 import React from "react";
 import Popup from "reactjs-popup";
 import 'reactjs-popup/dist/index.css';
+import {Login} from "./"
+import { LogIn } from "../api-adapter";
 
 const Navbar = () => {
+
   return (
     <div id="navbar">
         <h2>JuiceBox</h2>
@@ -11,8 +14,8 @@ const Navbar = () => {
             placeholder="Search Posts"  
             /*onChange={handleSearch}*/ />
         </form>
-        <Popup trigger={<button>Log In</button>} postion="bottom center">
-          <form className="submissionForm" /*onSubmit={handleSubmit}*/>
+        <Popup trigger={<button>Log In</button>} position="bottom center">
+          <form className="submissionForm" onSubmit={Login}>  
             <h3>Log In</h3>
             <span>
             <label htmlFor="username">Username: </label>
