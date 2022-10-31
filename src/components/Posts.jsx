@@ -6,15 +6,14 @@ const Posts = (props) => {
     return(
         <div className="allPosts">
         {getPosts.length ? getPosts.map((post, index) =>{
-            {console.log(post)}
             return( 
-            <div className='onePost' id={post.id}>
+            <div className='onePost' key={post.id}>
                 <h2>{post.title}</h2>
                 <p>{post.content}</p>
                 <p>Tags:
                 {post.tags.map((tag, index)=>{
                     return (
-                    <span>{tag.name} </span>
+                    <span key={tag.id}> {tag.name} </span>
                     )
                 })}
             </p>
