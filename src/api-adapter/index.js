@@ -1,4 +1,5 @@
 const BASE_URL = "https://shielded-fjord-88557.herokuapp.com";
+// const BASE_URL = "http://localhost:8080"
 
 export async function LogIn(username, password) {
     try {
@@ -33,7 +34,7 @@ export async function GetPosts() {
     }
 }
 
-export async function MakePost(title, content, tags){
+export async function makePost(title, content, tags){
     try {
         const options = {
             method:"POST",
@@ -41,17 +42,14 @@ export async function MakePost(title, content, tags){
                 'Content-Type':"application/json",
                 "Authorization": `Bearer ${localStorage.getItem('token')}`
             }, body: JSON.stringify({
-                post: {
                     title,
                     content,
                     tags
-                }
             })
         }
         
         const response = await fetch (`${BASE_URL}/api/posts`, options)
         const result = await response.json()
-        console.log(result)
 
         return result
 

@@ -30,7 +30,7 @@ const Main = () => {
     <div id="main">
       <Navbar setLoggedIn={setLoggedIn} setMakingPost={setMakingPost}/>
       <Posts getPosts={getPosts} />
-      <CreatePost makingPost={makingPost} setMakingPost={setMakingPost}/>
+      <CreatePost makingPost={makingPost} setMakingPost={setMakingPost} setGetPosts={setGetPosts} getPosts={getPosts}/>
     </div>
   );
 };

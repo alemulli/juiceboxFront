@@ -1,9 +1,11 @@
 import React from "react";
-import { MakePost } from "../api-adapter";
+import { makePost } from "../api-adapter";
 
 const CreatePost = (props) => {
     const makingPost = props.makingPost
     const setMakingPost = props.setMakingPost
+    const getPosts = props.getPosts
+    const setGetPosts = props.setGetPosts
 
     async function closeCreatePost() {
         setMakingPost(false)
@@ -11,10 +13,11 @@ const CreatePost = (props) => {
 
     async function handleSubmit(event) {
         event.preventDefault()
-        const title = await event.target[0].value
-        const content = await event.target[1].value
-        const tags = await event.target[2].value
-        MakePost(title, content, tags)
+        const title = event.target[0].value
+        const content = event.target[1].value
+        const tags = event.target[2].value
+        const makeNewPost = await makePost(title, content, tags)
+        setGetPosts([...getPosts, makeNewPost.post])
         setMakingPost(false)
     }
 
