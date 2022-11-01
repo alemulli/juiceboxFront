@@ -39,3 +39,68 @@ body {
 #popup-2 {
   background-image: linear-gradient(rgb(63, 63, 201), lightblue, pink);
 }
+
+#createPostMenu.true {
+  z-index: 1;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width:100%;
+  height:100%;
+  background-color: rgba(0,0,0,0.4);
+}
+
+#createPostMenu.false {
+  display: none;
+}
+
+.createPostMenu {
+  background-image: linear-gradient(rgb(63, 63, 201), lightblue, pink);
+  max-width: 50vw;
+  min-width: 600px;
+  max-height: 50vh;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  border-radius: 10px 10px;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.createPostMenu form {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: space-between;
+}
+
+.createPostMenu h3, button {
+  align-self: center;
+}
+
+.material-symbols-outlined {
+  align-self: flex-end;
+}
+
+.material-symbols-outlined:hover {
+  font-weight: bolder;
+  transform: scale(1.2);
+}
+
+#postContent {
+  height: 30%;
+  min-height: 100px;
+  overflow: auto;
+  padding: 5px;
+  margin-top: 2px;
+}
+
+#postTags, #postTitle {
+  overflow: auto;
+  padding: 5px;
+  margin-top: 2px;
+}

@@ -5,6 +5,7 @@ import { LogIn } from "../api-adapter";
 
 const Navbar = (props) => {
   const setLoggedIn = props.setLoggedIn;
+  const setMakingPost = props.setMakingPost;
 
   async function logout() {
     localStorage.removeItem("token");
@@ -21,6 +22,10 @@ const Navbar = (props) => {
     localStorage.removeItem("token");
     localStorage.setItem("token", token);
     setLoggedIn(token);
+  }
+
+  async function createPostMenu() {
+    setMakingPost(true)
   }
 
   return (
@@ -80,11 +85,12 @@ const Navbar = (props) => {
             {" "}
             Logout{" "}
           </button>
-          <Popup
-            trigger={<button>Create Posts</button>}
+          <button className="createPostButton" onClick={createPostMenu} >Create Post</button>
+          {/* <Popup
+            trigger={<button className="createPostButton">Create Post</button>}
             position="bottom center"
-          >
-            <form>
+          > */}
+            {/* <form>
               <h3>Create A Post</h3>
               <span>
               <label htmlFor="title">Title:</label>
@@ -101,8 +107,8 @@ const Navbar = (props) => {
               <input id="postTags" type="text" required />
               </span>
               <button type="submit">Create Post</button>
-            </form>
-          </Popup>
+            </form> */}
+          {/* </Popup> */}
         </>
       )}
     </div>

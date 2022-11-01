@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Navbar, Posts } from './'
+import { Navbar, Posts, CreatePost } from './'
 import { GetPosts } from "../api-adapter";
 
 const Main = () => {
   const[getPosts, setGetPosts] = useState([])
   const[loggedIn, setLoggedIn] = useState(false)
+  const [makingPost, setMakingPost] = useState(false)
 
   useEffect (() => {
     const userLogIn = localStorage.getItem("token")
@@ -27,8 +28,9 @@ const Main = () => {
 
   return (
     <div id="main">
-      <Navbar setLoggedIn={setLoggedIn}/>
+      <Navbar setLoggedIn={setLoggedIn} setMakingPost={setMakingPost}/>
       <Posts getPosts={getPosts} />
+      <CreatePost makingPost={makingPost} setMakingPost={setMakingPost}/>
     </div>
   );
 };
