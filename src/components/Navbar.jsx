@@ -30,7 +30,11 @@ const Navbar = (props) => {
 
   return (
     <div id="navbar">
+      <div className="logo">
+      <img src="https://www.iconbolt.com/iconsets/fluent-emoji-flat/beverage-box.svg" />
       <h2>JuiceBox</h2>
+      </div>
+      <div className="navFunctions">
       <form id="searchBar">
         <input
           type="search"
@@ -81,36 +85,14 @@ const Navbar = (props) => {
         </>
       ) : (
         <>
+          <button className="createPostButton" onClick={createPostMenu}>Create Post</button>
           <button className="logOutButton" onClick={logout}>
             {" "}
             Logout{" "}
           </button>
-          <button className="createPostButton" onClick={createPostMenu} >Create Post</button>
-          {/* <Popup
-            trigger={<button className="createPostButton">Create Post</button>}
-            position="bottom center"
-          > */}
-            {/* <form>
-              <h3>Create A Post</h3>
-              <span>
-              <label htmlFor="title">Title:</label>
-              <input id="postTitle" type="text" required />
-              </span>
-              <br></br>
-              <span>
-              <label htmlFor="content">Body:</label>
-              <input id="postContent" type="text" required />
-              </span>
-              <br></br>
-              <span>
-              <label htmlFor="tags">Tags:</label>
-              <input id="postTags" type="text" required />
-              </span>
-              <button type="submit">Create Post</button>
-            </form> */}
-          {/* </Popup> */}
         </>
       )}
+    </div>
     </div>
   );
 };

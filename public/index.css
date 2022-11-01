@@ -1,21 +1,55 @@
-body {
+/* Some potential pallette colors if we go with the colors of the juicebox emoji:
+rgb(132,211,44) lime green?
+rgb(246,54,44) light red
+rgb(195,235,61) yellow-green
+rgb(47,148,82) green
+rgb(212,242,146) lightest green
+rgb(204,240,112) light green
+rgb(160,176,44) olive green?
+rgb(164,12,52) dark red
+rgb(158,224,52) lighter lime green
+*/
+
+body, #app{
   font-family: 'Raleway', Arial, sans-serif;
   height: 100vh;
   width: 100vw;
   margin: 0;
 }
 
+#main {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+}
+
+/* //////////////// NavBar //////////////// */
 
 #navbar {
   font-family: 'Poller One', Arial, sans-serif;
-  flex-grow: 1;
   max-height: 10%;
   min-height: 40px;
-  background-color: #222222;
-  color: white;
+  background-color: rgb(23, 70, 14);
+  color: rgb(246,54,44);
   display: flex;
+  justify-content: space-between;
   align-items: center;
+  padding: 5px;
 }
+
+.logo {
+  display: flex;
+  flex-direction: row;
+}
+
+.navFunctions {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+/* //////////////// Posts //////////////// */
 
 .allPosts {
   display: flex;
@@ -23,14 +57,19 @@ body {
   flex-direction: column;
   align-items: center;
   padding: 5px;
+  background-color: #d4f292;
+  flex-grow: 1;
 }
 
 .onePost {
- border: teal 2px dashed;
+ border: rgb(246,54,44) 2px dashed;
  border-radius: 5px;
  max-width: 50vw;
  min-width: 600px;
+ padding: 10px;
 }
+
+/* //////////////// Login and Register Popups //////////////// */
 
 #popup-1 {
   background-image: linear-gradient(rgb(63, 63, 201), lightblue, pink);
@@ -39,6 +78,8 @@ body {
 #popup-2 {
   background-image: linear-gradient(rgb(63, 63, 201), lightblue, pink);
 }
+
+/* //////////////// Create Post Menu //////////////// */
 
 #createPostMenu.true {
   z-index: 1;
