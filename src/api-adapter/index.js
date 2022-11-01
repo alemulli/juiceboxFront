@@ -14,10 +14,9 @@ export async function LogIn(username, password) {
     
         const response = await fetch (`${BASE_URL}/api/users/login`, options)
         const result = await response.json()
-        console.log(result)
-
         
         return result
+
     } catch (error) {
         console.error(error)
     }
@@ -29,6 +28,33 @@ export async function GetPosts() {
         const result = await response.json()
         const postResult = result.posts
         return postResult
+    } catch (error) {
+        console.error(error)
+    }
+}
+
+export async function MakePost(title, content, tags){
+    try {
+        const options = {
+            method:"POST",
+            headers: {
+                'Content-Type':"application/json",
+                "Authorization": `Bearer ${localStorage.getItem('token')}`
+            }, body: JSON.stringify({
+                post: {
+                    title,
+                    content,
+                    tags
+                }
+            })
+        }
+        
+        const response = await fetch (`${BASE_URL}/api/posts`, options)
+        const result = await response.json()
+        console.log(result)
+
+        return result
+
     } catch (error) {
         console.error(error)
     }
