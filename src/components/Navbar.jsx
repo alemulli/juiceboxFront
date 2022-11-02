@@ -1,7 +1,7 @@
 import React from "react";
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
-import { LogIn } from "../api-adapter";
+import { LogIn, registerUser } from "../api-adapter";
 
 const Navbar = (props) => {
   const setLoggedIn = props.setLoggedIn;
@@ -21,6 +21,21 @@ const Navbar = (props) => {
     localStorage.setItem("token", token);
     setLoggedIn(token);
   }
+
+  async function register(event) {
+      event.preventDefault()
+      const username= event.target[0].value
+      const password= event.target[1].value
+      const name = event.target[3].value
+      const location = event.target[4].value
+      const {token} = await registerUser(username, password, name, location)
+      localStorage.removeItem("token");
+      localStorage.setItem("token", token);
+      setLoggedIn(token);
+
+      // work around solution
+      // alert("Thanks for making an account :) Please sign in")
+    }
 
   async function createPostMenu() {
     setMakingPost(true)
@@ -60,7 +75,7 @@ const Navbar = (props) => {
             </form>
           </Popup>
           <Popup trigger={<button>Sign Up</button>} position="bottom center">
-            <form className="submissionForm" /*onSubmit={handleSubmit}*/>
+            <form className="submissionForm" onSubmit={register}>
               <h3>Register an Account</h3>
               <span>
                 <label htmlFor="username">Username: </label>
@@ -73,6 +88,16 @@ const Navbar = (props) => {
               <span>
                 <label htmlFor="Confirm password">Confirm Password: </label>
                 <input id="Confirm password" type="password" required />
+              </span>
+              <br></br>
+              <span>
+                <label htmlFor="name">Name: </label>
+                <input id="name" type="text" required />
+              </span>
+              <br></br>
+              <span>
+                <label htmlFor="location">Location: </label>
+                <input id="location" type="text" required />
               </span>
               <button className="submitButton" type="submit">
                 {" "}
@@ -94,5 +119,6 @@ const Navbar = (props) => {
     </div>
   );
 };
+
 
 export default Navbar;

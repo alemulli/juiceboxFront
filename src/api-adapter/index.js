@@ -23,6 +23,30 @@ export async function LogIn(username, password) {
     }
 }
 
+export async function registerUser(username, password, name, location) {
+    const registerOptions = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+            username,
+            password,
+            name, 
+            location
+      }),
+    };
+  
+    const response = await fetch(
+      `${BASE_URL}/api/users/register`,
+      registerOptions
+    );
+
+    const result = await response.json();
+    console.log(result);
+    return result
+  }
+
 export async function GetPosts() {
     try {
         const response = await fetch (`${BASE_URL}/api/posts`)
