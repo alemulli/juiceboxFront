@@ -13,13 +13,13 @@ rgb(158,224,52) lighter lime green
 body, #app{
   font-family: 'Raleway', Arial, sans-serif;
   height: 100vh;
-  width: 100vw;
+  width: 99vw;
   margin: 0;
 }
 
 #main {
   height: 100vh;
-  width: 100vw;
+  width: 99vw;
   display: flex;
   flex-direction: column;
 }
@@ -47,6 +47,15 @@ body, #app{
   display: flex;
   flex-direction: row;
   gap: 10px;
+}
+
+#navbar .logo h2 {
+  color: rgb(246,54,44);
+  text-decoration: none;
+}
+
+#navbar a {
+  text-decoration: none;
 }
 
 /* //////////////// Posts //////////////// */

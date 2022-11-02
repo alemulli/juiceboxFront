@@ -1,11 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { Navbar, Posts, CreatePost } from './'
-import { GetPosts } from "../api-adapter";
+import { Navbar, Posts, CreatePost, Profile } from './'
+import { GetPosts, getUser } from "../api-adapter";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+} from "react-router-dom";
 
 const Main = () => {
   const[getPosts, setGetPosts] = useState([])
   const[loggedIn, setLoggedIn] = useState(false)
-  const [makingPost, setMakingPost] = useState(false)
+  const[makingPost, setMakingPost] = useState(false)
+  const[userData, setUserData] = useState()
 
   useEffect (() => {
     const userLogIn = localStorage.getItem("token")
@@ -25,13 +31,27 @@ const Main = () => {
     fetchData();
   }, []);
 
+  useEffect(()=>{
+    const fetchData = async() =>{
+      const data = await getUser();
+
+      setUserData(data[0]);
+    }
+    fetchData();
+  }, [])
+
 
   return (
-    <div id="main">
-      <Navbar setLoggedIn={setLoggedIn} setMakingPost={setMakingPost}/>
-      <Posts getPosts={getPosts} />
-      <CreatePost makingPost={makingPost} setMakingPost={setMakingPost} setGetPosts={setGetPosts} getPosts={getPosts}/>
-    </div>
+    <Router>
+      <div id="main">
+        <Navbar setLoggedIn={setLoggedIn} setMakingPost={setMakingPost}/>
+          <Routes>
+            <Route path="/" element={<Posts getPosts={getPosts} />} />
+            <Route path="/profile" element={<Profile userData={userData}/>} />
+          </Routes>
+        <CreatePost makingPost={makingPost} setMakingPost={setMakingPost} setGetPosts={setGetPosts} getPosts={getPosts}/>
+      </div>
+    </Router>
   );
 };
 

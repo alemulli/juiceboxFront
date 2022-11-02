@@ -1,6 +1,7 @@
 import React from "react";
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
+import { NavLink } from 'react-router-dom';
 import { LogIn, registerUser } from "../api-adapter";
 
 const Navbar = (props) => {
@@ -18,7 +19,9 @@ const Navbar = (props) => {
     const password = event.target[1].value;
     const { token } = await LogIn(username, password);
     localStorage.removeItem("token");
+    localStorage.removeItem("username");
     localStorage.setItem("token", token);
+    localStorage.setItem("username", username)
     setLoggedIn(token);
   }
 
@@ -30,7 +33,9 @@ const Navbar = (props) => {
       const location = event.target[4].value
       const {token} = await registerUser(username, password, name, location)
       localStorage.removeItem("token");
+      localStorage.removeItem("username");
       localStorage.setItem("token", token);
+      localStorage.setItem("username", username)
       setLoggedIn(token);
 
       // work around solution
@@ -43,10 +48,10 @@ const Navbar = (props) => {
 
   return (
     <div id="navbar">
-      <div className="logo">
+      <NavLink to ="/"><div className="logo">
       <img src="https://www.iconbolt.com/iconsets/fluent-emoji-flat/beverage-box.svg" />
       <h2>JuiceBox</h2>
-      </div>
+      </div></NavLink>
       <div className="navFunctions">
       <form id="searchBar">
         <input
@@ -109,6 +114,7 @@ const Navbar = (props) => {
       ) : (
         <>
           <button className="createPostButton" onClick={createPostMenu}>Create Post</button>
+          <NavLink to ="/profile"><button>Profile</button></NavLink>
           <button className="logOutButton" onClick={logout}>
             {" "}
             Logout{" "}

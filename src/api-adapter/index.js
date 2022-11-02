@@ -15,7 +15,6 @@ export async function LogIn(username, password) {
     
         const response = await fetch (`${BASE_URL}/api/users/login`, options)
         const result = await response.json()
-        
         return result
 
     } catch (error) {
@@ -77,6 +76,22 @@ export async function makePost(title, content, tags){
 
         return result
 
+    } catch (error) {
+        console.error(error)
+    }
+}
+
+export async function getUser() {
+    try {
+        const response = await fetch (`${BASE_URL}/api/users`)
+        const result = await response.json()
+        const userResults = result.users
+        const singleUser = userResults.filter((user)=>{
+            if (user.username === localStorage.getItem("username")) {
+                return user
+            }
+        })
+        return singleUser
     } catch (error) {
         console.error(error)
     }
