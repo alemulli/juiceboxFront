@@ -96,3 +96,22 @@ export async function getUser() {
         console.error(error)
     }
 }
+
+export async function deletePost(postIdDelete) {
+    try {
+        const options = {
+            method:"DELETE",
+            headers: {
+                'Content-Type':"application/json",
+                "Authorization": `Bearer ${localStorage.getItem('token')}`
+            }
+        }
+        const response = await fetch(`${BASE_URL}/api/posts/${postIdDelete}`, options)
+        console.log(response)
+        const data = await response.json();
+        }
+        
+     catch (error) {
+        console.error(error)
+    }
+}

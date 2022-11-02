@@ -1,16 +1,19 @@
 import React from "react";
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { LogIn, registerUser } from "../api-adapter";
 
 const Navbar = (props) => {
   const setLoggedIn = props.setLoggedIn;
   const setMakingPost = props.setMakingPost;
 
+  const navigate=useNavigate()
+
   async function logout() {
     localStorage.removeItem("token");
     setLoggedIn(false);
+    navigate("/")
   }
 
   async function login(event) {

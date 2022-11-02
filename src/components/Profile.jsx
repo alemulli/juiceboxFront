@@ -1,11 +1,21 @@
 import React from "react";
+import { deletePost } from "../api-adapter";
 
 
 
 const Profile = (props) => {
     const userData = props.userData
     const getPosts = props.getPosts
-    console.log(getPosts)
+    const setGetPosts = props.setGetPosts
+
+    async function handleDelete(e) {
+        // const toDelete = e.target.id;
+        console.log(e)
+        const deleted = await deletePost(e);
+        console.log(deleted);
+        const filteredPosts = getPosts.filter(post => post.id !== e);
+        setGetPosts(filteredPosts)
+    }
 
     return(
         <div className="profilePage">
@@ -32,6 +42,7 @@ const Profile = (props) => {
                         )
                     })}
                 </p>
+                <button onClick={(e)=>{handleDelete(post.id)}}>Delete</button>
                 </div>
                 )
         }
