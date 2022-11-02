@@ -115,3 +115,24 @@ export async function deletePost(postIdDelete) {
         console.error(error)
     }
 }
+
+export async function updatePost(title, content, tags, id) {
+    const options = {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+      body: JSON.stringify({
+        title,
+        content,
+        tags
+      }),
+    };
+    const response = await fetch(
+      `${BASE_URL}/api/posts/${id}`,
+      options
+    );
+    const result = await response.json();
+    return result;
+  }

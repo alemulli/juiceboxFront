@@ -17,6 +17,10 @@ const Profile = (props) => {
         setGetPosts(filteredPosts)
     }
 
+    async function handleChange() {
+        
+    }
+
     return(
         <div className="profilePage">
             <h1>User Profile:</h1>
@@ -42,6 +46,7 @@ const Profile = (props) => {
                         )
                     })}
                 </p>
+                <button onClick={(e) => {}}>Edit Post</button>
                 <button onClick={(e)=>{handleDelete(post.id)}}>Delete</button>
                 </div>
                 )

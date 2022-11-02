@@ -12,6 +12,7 @@ const Navbar = (props) => {
 
   async function logout() {
     localStorage.removeItem("token");
+    localStorage.removeItem("username")
     setLoggedIn(false);
     navigate("/")
   }
