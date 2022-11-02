@@ -47,7 +47,7 @@ const Main = () => {
         <Navbar setLoggedIn={setLoggedIn} setMakingPost={setMakingPost}/>
           <Routes>
             <Route path="/" element={<Posts getPosts={getPosts} />} />
-            <Route path="/profile" element={<Profile userData={userData}/>} />
+            <Route path="/profile" element={<Profile userData={userData} getPosts={getPosts}/>} />
           </Routes>
         <CreatePost makingPost={makingPost} setMakingPost={setMakingPost} setGetPosts={setGetPosts} getPosts={getPosts}/>
       </div>
