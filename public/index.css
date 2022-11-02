@@ -71,11 +71,14 @@ body, #app{
 }
 
 .onePost {
- border: rgb(246,54,44) 2px dashed;
+ border: rgb(246,54,44) 2px solid;
  border-radius: 5px;
  max-width: 50vw;
  min-width: 600px;
  padding: 10px;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
 }
 
 /* //////////////// Login and Register Popups //////////////// */
@@ -153,4 +156,29 @@ body, #app{
   overflow: auto;
   padding: 5px;
   margin-top: 2px;
+}
+
+.profilePage {
+  background-color: #d4f292;
+  display: flex;
+  overflow: auto;
+  justify-content: space-between;
+}
+
+#userInformation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-self: center;
+  padding: 30px;
+  flex-grow: 1;
+}
+
+#postLists {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow: scroll;
+  background-color: #d4f292;
+  padding: 30px
 }

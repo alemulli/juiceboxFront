@@ -18,11 +18,12 @@ const Profile = (props) => {
     }
 
     async function handleChange() {
-        
+
     }
 
     return(
         <div className="profilePage">
+            <div id="userInformation">
             <h1>User Profile:</h1>
         {userData ? 
                 <div className="profileInfo"> 
@@ -31,7 +32,8 @@ const Profile = (props) => {
                 <p>Username:{userData.username}</p>
                 </div>
         : null}
-        <div>
+            </div>
+        <div id="postLists">
 
         {getPosts.length ? getPosts.map((post, index) =>{
         if(post.author.username === localStorage.getItem("username")) {
@@ -46,8 +48,11 @@ const Profile = (props) => {
                         )
                     })}
                 </p>
+                <span>
                 <button onClick={(e) => {}}>Edit Post</button>
                 <button onClick={(e)=>{handleDelete(post.id)}}>Delete</button>
+                </span>
+                
                 </div>
                 )
         }
