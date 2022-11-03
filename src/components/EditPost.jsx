@@ -6,6 +6,7 @@ const EditPost = (props) => {
     const setEditingPost = props.setEditingPost
     const getPosts = props.getPosts
     const setGetPosts = props.setGetPosts
+    const postToEdit = props.postToEdit
 
     async function closeEditPost() {
         setEditingPost(false)
@@ -16,8 +17,16 @@ const EditPost = (props) => {
         const title = event.target[0].value
         const content = event.target[1].value
         const tags = event.target[2].value
-        const makeNewPost = await updatePost(title, content, tags)
-        setGetPosts([...getPosts, makeNewPost.post])
+        const makeNewPost = await updatePost( title, content, tags, postToEdit)
+        const filteredPost = getPosts.filter((e) =>{
+            if (e.id !== postToEdit) {
+                return true
+            }
+            else {
+                return false
+            }
+        })
+        setGetPosts([...filteredPost, makeNewPost.post])
         setEditingPost(false)
     }
 
