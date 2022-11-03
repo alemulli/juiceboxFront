@@ -33,7 +33,7 @@ const CreatePost = (props) => {
             <label htmlFor="postContent">Body: </label>
             <input id="postContent" type="text" required />
             <br/>
-            <label htmlFor="postTags">Tags: </label>
+            <label htmlFor="postTags">Tags: <small>ALL TAGS MUST BEGIN WITH # !</small></label>
             <input id="postTags" type="text" required />
             <br />
             <button type="submit">Create Post</button>

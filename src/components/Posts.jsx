@@ -9,11 +9,9 @@ const Posts = (props) => {
     const setSelectedTag = props.setSelectedTag
 
     async function handleDelete(e) {
-        console.log(e)
         const deleted = await deletePost(e);
-        console.log(deleted);
         const filteredPosts = getPosts.filter(post => post.id !== e);
-        setGetPosts(filteredPosts)
+        await setGetPosts(filteredPosts)
     }
 
     return(
