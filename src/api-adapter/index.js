@@ -136,3 +136,17 @@ export async function updatePost(title, content, tags, id) {
     const result = await response.json();
     return result;
   }
+
+  export async function getPostByUserId(userId) {
+    try {
+        const response = await fetch(
+            `${BASE_URL}/api/users/${userId}/posts`
+          );
+      
+          const result = await response.json();
+          return result;
+
+    } catch (error) {
+        console.error(error)
+    }
+  }

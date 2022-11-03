@@ -9,7 +9,6 @@ const Profile = (props) => {
     const setGetPosts = props.setGetPosts
 
     async function handleDelete(e) {
-        // const toDelete = e.target.id;
         console.log(e)
         const deleted = await deletePost(e);
         console.log(deleted);
