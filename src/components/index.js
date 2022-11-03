@@ -6,3 +6,4 @@ export {default as CreatePost} from'./CreatePost'
 export {default as Profile} from './Profile'
 export {default as SelectedUser} from "./SelectedUser"
 export {default as SelectedTag} from "./SelectedTag"
+export {default as EditPost} from "./EditPost"

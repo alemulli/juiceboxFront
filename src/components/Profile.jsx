@@ -9,6 +9,7 @@ const Profile = (props) => {
     const getPosts = props.getPosts
     const setGetPosts = props.setGetPosts
     const setSelectedTag = props.setSelectedTag
+    const setEditingPost=props.setEditingPost
 
     async function handleDelete(e) {
         console.log(e)
@@ -18,9 +19,13 @@ const Profile = (props) => {
         setGetPosts(filteredPosts)
     }
 
-    async function handleChange() {
+    // async function handleChange() {
 
-    }
+    // }
+
+    async function editPostMenu() {
+        setEditingPost(true)
+      }
 
     return(
         <div className="profilePage">
@@ -50,7 +55,7 @@ const Profile = (props) => {
                     })}
                 </p>
                 <span>
-                <button onClick={(e) => {}}>Edit Post</button>
+                <button onClick={editPostMenu}>Edit Post</button>
                 <button onClick={(e)=>{handleDelete(post.id)}}>Delete</button>
                 </span>
                 
