@@ -41,9 +41,6 @@ const Navbar = (props) => {
       localStorage.setItem("token", token);
       localStorage.setItem("username", username)
       setLoggedIn(token);
-
-      // work around solution
-      // alert("Thanks for making an account :) Please sign in")
     }
 
   async function createPostMenu() {
@@ -57,13 +54,6 @@ const Navbar = (props) => {
       <h2>JuiceBox</h2>
       </div></NavLink>
       <div className="navFunctions">
-      <form id="searchBar">
-        <input
-          type="search"
-          placeholder="Search Posts"
-          /*onChange={handleSearch}*/
-        />
-      </form>
       {!localStorage.token ? (
         <>
           <Popup trigger={<button>Log In</button>} position="bottom center">

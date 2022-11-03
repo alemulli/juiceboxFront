@@ -50,7 +50,7 @@ const Main = () => {
       <div id="main">
         <Navbar setLoggedIn={setLoggedIn} setMakingPost={setMakingPost}/>
           <Routes>
-            <Route path="/" element={<Posts getPosts={getPosts} setSelectedUser={setSelectedUser} setSelectedTag={setSelectedTag} setGetPosts={setGetPosts}/>} />
+            <Route path="/" element={<Posts getPosts={getPosts} setSelectedUser={setSelectedUser} setSelectedTag={setSelectedTag} setGetPosts={setGetPosts} setEditingPost={setEditingPost} setPostToEdit={setPostToEdit}/>} />
             <Route path="/profile" element={<Profile userData={userData} getPosts={getPosts} setGetPosts={setGetPosts} setSelectedTag={setSelectedTag} setEditingPost={setEditingPost} setPostToEdit={setPostToEdit} />} />
             <Route path="/selected-user" element={<SelectedUser selectedUser={selectedUser} setSelectedTag={setSelectedTag}/>}/>
             <Route path="/selected-tag" element={<SelectedTag selectedTag={selectedTag} setSelectedTag={setSelectedTag}/>}/>
