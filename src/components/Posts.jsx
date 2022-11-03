@@ -6,6 +6,7 @@ const Posts = (props) => {
     const getPosts = props.getPosts
     const setGetPosts = props.setGetPosts
     const setSelectedUser = props.setSelectedUser
+    const setSelectedTag = props.setSelectedTag
 
     async function handleDelete(e) {
         console.log(e)
@@ -21,12 +22,12 @@ const Posts = (props) => {
             return( 
             <div className='onePost' key={post.id}>
                 <h2>{post.title}</h2>
-                <small>By: <NavLink to="/selected-user" onClick={(function(){console.log; setSelectedUser(post.author.id)})}>{post.author.username}</NavLink></small>
+                <small>By: <NavLink to="/selected-user" onClick={(function(){setSelectedUser(post.author.id)})}>{post.author.username}</NavLink></small>
                 <p>{post.content}</p>
                 <p>Tags:
                 {post.tags.map((tag, index)=>{
                     return (
-                    <span key={tag.id}> {tag.name} </span>
+                    <small key={tag.id}> <NavLink to="/selected-tag" onClick={(function(){setSelectedTag(tag.name)})}>{tag.name}</NavLink> </small>
                     )
                 })}
             </p>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Navbar, Posts, CreatePost, Profile, SelectedUser } from './'
+import { Navbar, Posts, CreatePost, Profile, SelectedUser, SelectedTag } from './'
 import { GetPosts, getUser } from "../api-adapter";
 import {
   BrowserRouter as Router,
@@ -13,6 +13,7 @@ const Main = () => {
   const[makingPost, setMakingPost] = useState(false)
   const[userData, setUserData] = useState()
   const[selectedUser, setSelectedUser] = useState()
+  const[selectedTag, setSelectedTag] = useState()
 
   useEffect (() => {
     const userLogIn = localStorage.getItem("token")
@@ -47,10 +48,10 @@ const Main = () => {
       <div id="main">
         <Navbar setLoggedIn={setLoggedIn} setMakingPost={setMakingPost}/>
           <Routes>
-            <Route path="/" element={<Posts getPosts={getPosts} setSelectedUser={setSelectedUser} />} />
-            <Route path="/profile" element={<Profile userData={userData} getPosts={getPosts} setGetPosts={setGetPosts}/>} />
-            <Route path="/selected-user" element={<SelectedUser selectedUser={selectedUser}/>}/>
-
+            <Route path="/" element={<Posts getPosts={getPosts} setSelectedUser={setSelectedUser} setSelectedTag={setSelectedTag}/>} />
+            <Route path="/profile" element={<Profile userData={userData} getPosts={getPosts} setGetPosts={setGetPosts} setSelectedTag={setSelectedTag}/>} />
+            <Route path="/selected-user" element={<SelectedUser selectedUser={selectedUser} setSelectedTag={setSelectedTag}/>}/>
+            <Route path="/selected-tag" element={<SelectedTag selectedTag={selectedTag} setSelectedTag={setSelectedTag}/>}/>
           </Routes>
         <CreatePost makingPost={makingPost} setMakingPost={setMakingPost} setGetPosts={setGetPosts} getPosts={getPosts}/>
       </div>

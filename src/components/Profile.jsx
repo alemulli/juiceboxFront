@@ -1,5 +1,6 @@
 import React from "react";
 import { deletePost } from "../api-adapter";
+import { NavLink } from "react-router-dom";
 
 
 
@@ -7,6 +8,7 @@ const Profile = (props) => {
     const userData = props.userData
     const getPosts = props.getPosts
     const setGetPosts = props.setGetPosts
+    const setSelectedTag = props.setSelectedTag
 
     async function handleDelete(e) {
         console.log(e)
@@ -43,7 +45,7 @@ const Profile = (props) => {
                     <p>Tags:
                     {post.tags.map((tag, index)=>{
                         return (
-                        <span key={tag.id}> {tag.name} </span>
+                            <small key={tag.id}> <NavLink to="/selected-tag" onClick={(function(){setSelectedTag(tag.name)})}>{tag.name}</NavLink> </small>
                         )
                     })}
                 </p>

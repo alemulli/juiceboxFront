@@ -1,9 +1,11 @@
 import react from "react";
 import { getPostByUserId } from "../api-adapter";
 import { useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
 
 const SelectedUser = (props) => {
     const selectedUser = props.selectedUser
+    const setSelectedTag = props.setSelectedTag
     const [user, setUser] = useState({})
     
     useEffect(() => {
@@ -37,7 +39,7 @@ const SelectedUser = (props) => {
                 <p>Tags:
                 {post.tags.map((tag, index)=>{
                     return (
-                    <span key={tag.id}> {tag.name} </span>
+                        <small key={tag.id}> <NavLink to="/selected-tag" onClick={(function(){setSelectedTag(tag.name)})}>{tag.name}</NavLink> </small>
                     )
                 })}
             </p>

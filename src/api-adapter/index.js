@@ -150,3 +150,17 @@ export async function updatePost(title, content, tags, id) {
         console.error(error)
     }
   }
+
+  export async function getPostByTag(tagName) {
+    try {
+        const response = await fetch(
+            `${BASE_URL}/api/tags/%23${tagName}/posts`
+          );
+      
+          const result = await response.json();
+          return result;
+
+    } catch (error) {
+        console.error(error)
+    }
+  }
