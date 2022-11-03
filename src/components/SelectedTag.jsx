@@ -21,7 +21,7 @@ const SelectedTag = (props) => {
 
     console.log(tag)
     return ( 
-    <div id="allPosts">
+    <div className="allPosts">
 
      {tag && tag.posts && tag.posts.length ? tag.posts.map((post, index) =>{
    {
