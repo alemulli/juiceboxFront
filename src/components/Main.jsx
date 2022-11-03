@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Navbar, Posts, CreatePost, Profile, SelectedUser, SelectedTag, EditPost } from './'
+import { Navbar, Posts, CreatePost, Profile, SelectedUser, SelectedTag, EditPost, Footer } from './'
 import { GetPosts, getUser } from "../api-adapter";
 import {
   BrowserRouter as Router,
@@ -57,6 +57,7 @@ const Main = () => {
           </Routes>
         <CreatePost makingPost={makingPost} setMakingPost={setMakingPost} setGetPosts={setGetPosts} getPosts={getPosts} />
         <EditPost editingPost={editingPost} setEditingPost={setEditingPost} setGetPosts={setGetPosts} getPosts={getPosts} postToEdit={postToEdit}/>
+        <Footer />
       </div>
     </Router>
   );

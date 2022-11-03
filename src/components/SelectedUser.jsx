@@ -29,11 +29,13 @@ const SelectedUser = (props) => {
     : null}
         </div>
     <div id="postLists">
-
+       
      {user && user.userInfo && user.userInfo.posts && user.userInfo.posts.length ? user.userInfo.posts.map((post, index) =>{
    {
         return( 
+
             <div className='onePost' key={post.id}>
+                
                 <h2>{post.title}</h2>
                 <p>{post.content}</p>
                 <p>Tags:

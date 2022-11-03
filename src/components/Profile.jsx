@@ -26,6 +26,7 @@ const Profile = (props) => {
             <h1>User Profile:</h1>
         {userData ? 
                 <div className="profileInfo"> 
+        
                 <p>Name:{userData.name}</p>
                 <p>Location:{userData.location}</p>
                 <p>Username:{userData.username}</p>
@@ -33,7 +34,7 @@ const Profile = (props) => {
         : null}
             </div>
         <div id="postLists">
-
+        <h1>Your Post's:</h1>
         {getPosts.length ? getPosts.map((post, index) =>{
         if(post.author.username === localStorage.getItem("username")) {
             return( 

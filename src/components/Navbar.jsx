@@ -56,7 +56,7 @@ const Navbar = (props) => {
       <div className="navFunctions">
       {!localStorage.token ? (
         <>
-          <Popup trigger={<button>Log In</button>} position="bottom center">
+          <Popup trigger={<button>Log In</button>} position="bottom right">
             <form className="submissionForm" onSubmit={login}>
               <h3>Log In</h3>
               <span>
@@ -73,7 +73,7 @@ const Navbar = (props) => {
               </button>
             </form>
           </Popup>
-          <Popup trigger={<button>Sign Up</button>} position="bottom center">
+          <Popup trigger={<button>Sign Up</button>} position="bottom right">
             <form className="submissionForm" onSubmit={register}>
               <h3>Register an Account</h3>
               <span>
