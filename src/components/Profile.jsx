@@ -20,19 +20,38 @@ const Profile = (props) => {
         setGetPosts(filteredPosts)
     }
 
+    async function handleChange(e) {
+        const name = e.target[0].value
+        const location = e.target[1].value
+        const username = e.target[2].value
+        const userId = userData.id 
+    }
+
+    
+
     return(
         <div className="profilePage">
             <div id="userInformation">
             <h1>User Profile:</h1>
         {userData ? 
+                <form onSubmit={handleChange}>
                 <div className="profileInfo"> 
-        
-                <p>Name:{userData.name}</p>
-                <p>Location:{userData.location}</p>
-                <p>Username:{userData.username}</p>
+                <label htmlFor="name">Name: </label>
+                <input id="name" defaultValue={userData.name} />
+                <br></br>
+                <label htmlFor="location">Location: </label>
+                <input id= "location" defaultValue={userData.location} />
+                <br></br>
+                <label htmlFor="username">Username: </label>
+                <input id="username" defaultValue={userData.username}/>
+                <br></br>
+                <button>Edit Your Info</button>
                 </div>
+                </form>
         : null}
             </div>
+
+            
         <div id="postLists">
         <h1>Your Post's:</h1>
         {getPosts.length ? getPosts.map((post, index) =>{
