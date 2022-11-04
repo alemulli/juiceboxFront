@@ -28,6 +28,9 @@ const EditPost = (props) => {
         })
         setGetPosts([...filteredPost, makeNewPost.post])
         setEditingPost(false)
+        event.target[0].value = ''
+        event.target[1].value = ''
+        event.target[2].value = ''
     }
 
     return(
@@ -36,16 +39,15 @@ const EditPost = (props) => {
         <span className="material-symbols-outlined" onClick={closeEditPost}>close</span>
         <form onSubmit={handleSubmit}>
             <h3>Edit Post</h3>
-            <label htmlFor="postTitle">Title: </label>
-            <input id="postTitle" type="text" required />
+            <label htmlFor="postTitle1">Title: </label>
+            <input id="postTitle1" type="text" required />
             <br/>
-            <label htmlFor="postContent">Body: </label>
-            <input id="postContent" type="text" required />
+            <label htmlFor="postContent1">Body: </label>
+            <input id="postContent1" type="text" required />
             <br/>
-            <label htmlFor="postTags">Tags: <small>ALL TAGS MUST BEGIN WITH # !</small></label>
-            <input id="postTags" type="text" required />
-            <br />
-            <button type="submit">Submit</button>
+            <label htmlFor="postTags1">Tags: <small>All tags must begin with # !</small></label>
+            <input id="postTags1" type="text" required />
+            <button className="lr-submitButton" type="submit">Submit</button>
         </form>
         </div>
         </div>

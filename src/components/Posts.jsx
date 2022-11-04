@@ -44,39 +44,43 @@ const Posts = (props) => {
     }
 
     return(
-        <div className="allPosts">
-            <form id="searchBar">
+        <>
+        <form id="searchBar">
+            <label>
                 <input 
                     value={query}
                     type="search"
-                    placeholder="Search Posts"
+                    placeholder="Search Posts..."
                     onChange={e => setQuery(e.target.value)}
                     onSubmit={onSubmit}
                 />
+            </label>
             </form>
+        <div className="allPosts">
         {filteredItems.length ? filteredItems.map((post, index) =>{
             return( 
             <div className='onePost' key={post.id}>
                 <h2>{post.title}</h2>
                 <small>By: <NavLink to="/selected-user" onClick={(function(){setSelectedUser(post.author.id)})}>{post.author.username}</NavLink></small>
                 <p>{post.content}</p>
-                <p>Tags:
+                <small>Tags:
                 {post.tags.map((tag, index)=>{
                     return (
-                    <small key={tag.id}> <NavLink to="/selected-tag" onClick={(function(){setSelectedTag(tag.name)})}>{tag.name}</NavLink> </small>
+                    <span key={tag.id}> <NavLink to="/selected-tag" onClick={(function(){setSelectedTag(tag.name)})}>{tag.name}</NavLink> </span>
                     )
                 })}
-            </p>
+            </small>
             {post.author.username === localStorage.getItem("username") ?
-            <span>
+            <div className="buttons">
              <button onClick={(function(){setPostToEdit(post.id); setEditingPost(true)})}>Edit Post</button>
              <button onClick={(e)=>{handleDelete(post.id)}}>Delete</button> 
-            </span>
+            </div>
             : null}
             </div>
             )
         }): null}
         </div>
+        </>
     )
 }
 

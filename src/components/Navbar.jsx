@@ -32,40 +32,55 @@ const Navbar = (props) => {
     localStorage.setItem("token", response.token);
     localStorage.setItem("username", username);
     setLoggedIn(response.token)
+    event.target[0].value = ''
+    event.target[1].value = ''
     } else {
       setLoggedIn(false)
+      event.target[0].value = ''
+      event.target[1].value = ''
+      return(
+        alert("Username not found or username and password do not match. Please check your credentials or register a new account.")
+    )
     }
-   
-    // localStorage.removeItem("token");
-    // localStorage.removeItem("username");
-    // localStorage.setItem("token", token);
-    // localStorage.setItem("username", username);
-    // console.log(localStorage.getItem("token"))
-    // if (localStorage.getItem("token") == undefined) {
-      
-    //   localStorage.removeItem("token");
-    //   localStorage.removeItem("username");
-    //   setLoggedIn(false);
-    //   setUserData();
-    //   setSelectedUser();
-    //   navigate("/");
-    // } else {
-    //   setLoggedIn(token);
-    // }
   }
 
   async function register(event) {
     event.preventDefault();
     const username = event.target[0].value;
     const password = event.target[1].value;
+    const confirmedPassword = event.target[2].value;
     const name = event.target[3].value;
     const location = event.target[4].value;
-    const { token } = await registerUser(username, password, name, location);
-    localStorage.removeItem("token");
-    localStorage.removeItem("username");
-    localStorage.setItem("token", token);
-    localStorage.setItem("username", username);
-    setLoggedIn(token);
+    if (password === confirmedPassword) {
+      const response = await registerUser(username, password, name, location);
+      localStorage.removeItem("token");
+      localStorage.removeItem("username");
+      if (response.token) {
+        localStorage.setItem("token", response.token);
+        localStorage.setItem("username", username);
+        setLoggedIn(response.token)
+        event.target[0].value = ''
+        event.target[1].value = ''
+        event.target[2].value = ''
+        event.target[3].value = ''
+        event.target[4].value = ''
+      } else {
+        setLoggedIn(false)
+        alert("Account is already registered. Please log in.")
+        event.target[0].value = ''
+        event.target[1].value = ''
+        event.target[2].value = ''
+        event.target[3].value = ''
+        event.target[4].value = ''
+      }
+    } else {
+      alert("Passwords do not match!")
+      event.target[0].value = ''
+      event.target[1].value = ''
+      event.target[2].value = ''
+      event.target[3].value = ''
+      event.target[4].value = ''
+    }
   }
 
   async function createPostMenu() {
@@ -84,7 +99,7 @@ const Navbar = (props) => {
         {!localStorage.token ? (
           <>
             <Popup trigger={<button>Log In</button>} position="bottom right">
-              <form className="submissionForm" onSubmit={login}>
+              <form id="loginForm" className="submissionForm" onSubmit={login}>
                 <h3>Log In</h3>
                 <span>
                   <label htmlFor="username">Username: </label>
@@ -94,14 +109,14 @@ const Navbar = (props) => {
                   <label htmlFor="password">Password: </label>
                   <input id="password" type="password" required />
                 </span>
-                <button className="submitButton" type="submit">
+                <button className="lr-submitButton" type="submit">
                   {" "}
                   Submit{" "}
                 </button>
               </form>
             </Popup>
             <Popup trigger={<button>Sign Up</button>} position="bottom right">
-              <form className="submissionForm" onSubmit={register}>
+              <form id="registerForm" className="submissionForm" onSubmit={register}>
                 <h3>Register an Account</h3>
                 <span>
                   <label htmlFor="username">Username: </label>
@@ -115,17 +130,15 @@ const Navbar = (props) => {
                   <label htmlFor="Confirm password">Confirm Password: </label>
                   <input id="Confirm password" type="password" required />
                 </span>
-                <br></br>
                 <span>
                   <label htmlFor="name">Name: </label>
                   <input id="name" type="text" required />
                 </span>
-                <br></br>
                 <span>
                   <label htmlFor="location">Location: </label>
                   <input id="location" type="text" required />
                 </span>
-                <button className="submitButton" type="submit">
+                <button className="lr-submitButton" type="submit">
                   {" "}
                   Submit{" "}
                 </button>

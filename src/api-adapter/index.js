@@ -42,7 +42,13 @@ export async function registerUser(username, password, name, location) {
     );
 
     const result = await response.json();
-    console.log(result);
+    
+    if (result.error) {
+        return(
+            alert("Account is already registered. Please log in.")
+        )
+    }
+
     return result
   }
 
@@ -54,6 +60,9 @@ export async function GetPosts() {
         return postResult
     } catch (error) {
         console.error(error)
+        return (
+            <p className="loading">Loading the page... thank you for your patience!</p>
+        )
     }
 }
 
@@ -78,6 +87,9 @@ export async function makePost(title, content, tags){
 
     } catch (error) {
         console.error(error)
+        return(
+            alert("There was an error making your post. Please try again.")
+        )
     }
 }
 
@@ -107,12 +119,14 @@ export async function deletePost(postIdDelete) {
             }
         }
         const response = await fetch(`${BASE_URL}/api/posts/${postIdDelete}`, options)
-        console.log(response)
         const data = await response.json();
         }
         
      catch (error) {
         console.error(error)
+        return(
+            alert("There was an error deleting your post. Please try again.")
+        )
     }
 }
 
@@ -148,6 +162,9 @@ export async function updatePost(title, content, tags, id) {
 
     } catch (error) {
         console.error(error)
+        return (
+            <p className="loading">Loading the page... thank you for your patience!</p>
+        )
     }
   }
 
@@ -162,5 +179,8 @@ export async function updatePost(title, content, tags, id) {
 
     } catch (error) {
         console.error(error)
+        return (
+            <p className="loading">Loading the page... thank you for your patience!</p>
+        )
     }
   }

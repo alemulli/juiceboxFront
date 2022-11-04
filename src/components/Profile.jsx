@@ -11,19 +11,10 @@ const Profile = (props) => {
   const setPostToEdit = props.setPostToEdit;
 
   async function handleDelete(e) {
-    console.log(e);
     const deleted = await deletePost(e);
-    console.log(deleted);
     const filteredPosts = getPosts.filter((post) => post.id !== e);
     setGetPosts(filteredPosts);
   }
-
-  // async function handleChange(e) {
-  //     const name = e.target[0].value
-  //     const location = e.target[1].value
-  //     const username = e.target[2].value
-  //     const userId = userData.id
-  // }
 
   return (
     <div className="profilePage">
@@ -31,15 +22,14 @@ const Profile = (props) => {
         <h1>User Profile:</h1>
         {userData ? (
           <div className="profileInfo">
-            <p>Name:{userData.name}</p>
-            <p>Location:{userData.location}</p>
-            <p>Username:{userData.username}</p>
+            <p>Name: {userData.name}</p>
+            <p>Location: {userData.location}</p>
+            <p>Username: {userData.username}</p>
           </div>
         ) : null}
       </div>
-
       <div id="postLists">
-        <h1>Your Post's:</h1>
+        
         {getPosts.length
           ? getPosts.map((post, index) => {
               if (post.author.username === localStorage.getItem("username")) {
@@ -47,11 +37,11 @@ const Profile = (props) => {
                   <div className="onePost" key={post.id}>
                     <h2>{post.title}</h2>
                     <p>{post.content}</p>
-                    <p>
+                    <small>
                       Tags:
                       {post.tags.map((tag, index) => {
                         return (
-                          <small key={tag.id}>
+                          <span key={tag.id}>
                             {" "}
                             <NavLink
                               to="/selected-tag"
@@ -61,11 +51,11 @@ const Profile = (props) => {
                             >
                               {tag.name}
                             </NavLink>{" "}
-                          </small>
+                          </span>
                         );
                       })}
-                    </p>
-                    <span>
+                    </small>
+                    <div className="buttons">
                       <button
                         onClick={function () {
                           setPostToEdit(post.id);
@@ -81,7 +71,7 @@ const Profile = (props) => {
                       >
                         Delete
                       </button>
-                    </span>
+                    </div>
                   </div>
                 );
               }

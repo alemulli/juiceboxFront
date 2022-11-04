@@ -19,7 +19,6 @@ const SelectedTag = (props) => {
         fetchData();
     }, [selectedTag])
 
-    console.log(tag)
     return ( 
     <div className="allPosts">
 

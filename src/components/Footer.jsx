@@ -4,7 +4,11 @@ const Footer = () => {
     
 
     return (
-        <div>Hello</div>
+        <div className='footer'>
+        <h4>Made by:</h4>
+        <a href="https://www.instagram.com/timothybrennanjr/">Timothy Brennan</a>
+        <a href="https://amullin.netlify.app/">Lex Mullin</a>
+        </div>
     )
 }
 

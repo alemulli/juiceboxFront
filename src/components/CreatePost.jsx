@@ -19,6 +19,9 @@ const CreatePost = (props) => {
         const makeNewPost = await makePost(title, content, tags)
         setGetPosts([...getPosts, makeNewPost.post])
         setMakingPost(false)
+        event.target[0].value = ''
+        event.target[1].value = ''
+        event.target[2].value = ''
     }
 
     return(
@@ -33,10 +36,9 @@ const CreatePost = (props) => {
             <label htmlFor="postContent">Body: </label>
             <input id="postContent" type="text" required />
             <br/>
-            <label htmlFor="postTags">Tags: <small>ALL TAGS MUST BEGIN WITH # !</small></label>
+            <label htmlFor="postTags">Tags: <small>All tags must begin with # !</small></label>
             <input id="postTags" type="text" required />
-            <br />
-            <button type="submit">Create Post</button>
+            <button className="lr-submitButton" type="submit">Create Post</button>
         </form>
         </div>
         </div>

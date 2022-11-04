@@ -22,9 +22,9 @@ const SelectedUser = (props) => {
         <h1>User Profile:</h1>
     {user && user.userInfo && user.userInfo.id ? 
             <div className="profileInfo"> 
-            <p>Name:{user.userInfo.name}</p> 
-            <p>Location:{user.userInfo.location}</p>
-            <p>Username:{user.userInfo.username}</p> 
+            <p>Name: {user.userInfo.name}</p> 
+            <p>Location: {user.userInfo.location}</p>
+            <p>Username: {user.userInfo.username}</p> 
             </div>
     : null}
         </div>
@@ -38,13 +38,13 @@ const SelectedUser = (props) => {
                 
                 <h2>{post.title}</h2>
                 <p>{post.content}</p>
-                <p>Tags:
+                <small>Tags:
                 {post.tags.map((tag, index)=>{
                     return (
-                        <small key={tag.id}> <NavLink to="/selected-tag" onClick={(function(){setSelectedTag(tag.name)})}>{tag.name}</NavLink> </small>
+                        <span key={tag.id}> <NavLink to="/selected-tag" onClick={(function(){setSelectedTag(tag.name)})}>{tag.name}</NavLink> </span>
                     )
                 })}
-            </p>
+            </small>
             </div>
             )
     }
