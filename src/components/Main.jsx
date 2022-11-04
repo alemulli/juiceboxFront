@@ -42,13 +42,13 @@ const Main = () => {
       setUserData(data[0]);
     }
     fetchData();
-  }, [])
+  }, [loggedIn])
 
 
   return (
     <Router>
       <div id="main">
-        <Navbar setLoggedIn={setLoggedIn} setMakingPost={setMakingPost}/>
+        <Navbar setLoggedIn={setLoggedIn} setMakingPost={setMakingPost} setSelectedUser={setSelectedTag} setUserData={setUserData}/>
           <Routes>
             <Route path="/" element={<Posts getPosts={getPosts} setSelectedUser={setSelectedUser} setSelectedTag={setSelectedTag} setGetPosts={setGetPosts} setEditingPost={setEditingPost} setPostToEdit={setPostToEdit}/>} />
             <Route path="/profile" element={<Profile userData={userData} getPosts={getPosts} setGetPosts={setGetPosts} setSelectedTag={setSelectedTag} setEditingPost={setEditingPost} setPostToEdit={setPostToEdit} />} />

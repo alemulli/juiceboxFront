@@ -17,11 +17,11 @@ const Posts = (props) => {
     const filteredItems = useMemo(()=>{
         return getPosts.filter(post => {
             if(post.title.toLowerCase().includes(query.toLowerCase())){
-                return post.title.toLowerCase().includes(query.toLowerCase())}
+                return true}
             if(post.author.username.toLowerCase().includes(query.toLowerCase())){
-                return post.author.username.toLowerCase().includes(query.toLowerCase())}
+                return true}
             if(post.content.toLowerCase().includes(query.toLowerCase())){
-                return post.content.toLowerCase().includes(query.toLowerCase())}
+                return true}
         })
     }, [getPosts, query])
 
